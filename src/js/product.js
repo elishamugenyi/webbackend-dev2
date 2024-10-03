@@ -1,8 +1,21 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import {
+  getLocalStorage,
+  setLocalStorage,
+  getParam,
+  loadHeaderFooter,
+} from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
+import ProductDetails from "./ProductDetails.mjs";
+
+loadHeaderFooter();
 
 const dataSource = new ProductData("tents");
+const productId = getParam("product"); //added this variable to hold product IDs.
 
+const product = new ProductDetails(productId, dataSource); //added this too.
+product.init();
+
+/*
 //first load the element into dom
 document.addEventListener("DOMContentLoaded", () => {
   //clear the cart when the page loads (for testing or new sessions)
@@ -63,4 +76,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
-
+*/
